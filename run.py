@@ -6,7 +6,7 @@ app2 = Flask(__name__)
 
 
 def request_data(subject, lesson_id):
-    r = requests.get('http://hidden-badlands-8160.herokuapp.com:3000/api/lesson')
+    r = requests.get('http://maarifa.herokuapp.com/api/lesson')
     data = r.json()
     for lessons in data['objects']:
         if subject in lessons.values():
@@ -19,7 +19,7 @@ def message_handling():
     resp = twilio.twiml.Response()
     body = request.values.get('Body', None).lower()
     from_number = request.values.get('From', None)
-    users = requests.get('http://hidden-badlands-8160.herokuapp.com:3000/api/user')
+    users = requests.get('http://maarifa.herokuapp.com/api/user')
     user_data = users.json()
     for user in user_data['objects']:
         if from_number in user.values():
@@ -36,12 +36,12 @@ def message_handling():
                 resp.message('Subject currently not supported!')
         else:
             headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
-            sign_up = {'id': '+1415655674583'}  # , 'current_math': 0, 'current_english': 0, 'current_science': 0}
+            sign_up = {'id': '+19736665791'}  # , 'current_math': 0, 'current_english': 0, 'current_science': 0}
             print("####################################")
             print(sign_up)
-            requests.post(url="http://hidden-badlands-8160.herokuapp.com:3000/api/user", json=sign_up)
+            requests.post(url="http://maarifa.herokuapp.com/api/user", json=sign_up)
             resp.message("Welcome to TextLessons!")
     return str(resp)
-    
+
 if __name__ == "__main__":
     app2.run(debug=True, port=5000)
