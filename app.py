@@ -8,14 +8,14 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Maarifa.db'
 db = SQLAlchemy(app)
 
-
+#User Data
 class User(db.Model):
     id = db.Column(db.Text, primary_key=True, unique=True)
     current_math = db.Column(db.Integer, default=0)
     current_english = db.Column(db.Integer, default=0)
     current_science = db.Column(db.Integer, default=0)
 
-
+#Lesson Data
 class Lesson(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
     lesson_subject = db.Column(db.Text)
