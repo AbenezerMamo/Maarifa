@@ -35,7 +35,7 @@ def message_handling():
             else:
                 resp.message('Subject currently not supported!')
         else:
-            headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
+            #headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
             sign_up = {'id': '+19736665791'}  # , 'current_math': 0, 'current_english': 0, 'current_science': 0}
             print("####################################")
             print(sign_up)
